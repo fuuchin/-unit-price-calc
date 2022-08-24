@@ -1,0 +1,92 @@
+/* * {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+} */
+
+@media screen and (max-width: 450px) {
+  nav {
+    width: 120%;
+  }
+}
+
+.footer {
+  font-size: 17px;
+}
+
+main {
+  margin-left: 10px;
+}
+
+small {
+  word-break: break-word;
+}
+
+#detail {
+  width: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  border: 5px solid#555;
+  z-index: 10;
+  border-radius: 10px;
+  background: #666;
+  color: #fff;
+  padding: 10px;
+  transform: translate(-50%, -1000%);
+  transition: 500ms;
+}
+
+@media screen and (max-width: 959px) {
+  #detail {
+    width: 80%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    border: 5px solid#555;
+    z-index: 10;
+    border-radius: 10px;
+    background: #666;
+    color: #fff;
+    padding: 10px;
+    transform: translate(-50%, -1000%);
+    transition: 500ms;
+  }
+}
+
+
+#description {
+  line-height: 30px;
+}
+
+#unitcost-calc-input > input, select {
+  border: 1px solid #bbb;
+}
+
+#unitcost-calc-input > input[type="button"] {
+  border: 1px solid #0d6efd;
+}
+
+#unitcost-calc-input  {
+  width: 95%;
+}
+
+#table-display {
+  width: 95%;
+}
+
+@media screen and (max-width: 959px) {
+  #table-display {
+    width: 100%;
+  }
+}
+
+#back {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 9;
+}
