@@ -83,7 +83,7 @@ function tableAdd() {
       const blob = new Blob([`${dateExpression()}、${shopNameInput.value}にあった「${goodsNameInput.value}」は、${priceData[i].priceStrong + priceData[i].priceSpan}です。`], { type: 'text/plain' });
       const aTag = document.createElement('a');
       aTag.setAttribute('href', URL.createObjectURL(blob));
-      aTag.setAttribute('download', goodsNameInput.value + '.txt');
+      aTag.setAttribute('download', goodsNameInput.value || 'txt' + '.txt');
       aTag.setAttribute('target', '_blank');
       aTag.click();
 
