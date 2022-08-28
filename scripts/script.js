@@ -9,7 +9,6 @@ const unitCostCalcOkBtn        = id('unitcost-calc-ok');
 const tableDisplay             = id('table-display');
 const tableTrAdd               = id('table-tr-add');
 const detailArea               = id('detail');
-const detailText               = id('detail-text');
 const goodsNameInput           = id('goods-name');
 const shopNameInput            = id('shop-name');
 const closeBtn                 = id('close-btn');
@@ -65,40 +64,41 @@ function unitCostCalc(piece, unit, price, yenDol) {
  */
 function tableAdd() {
   tableTrAdd.innerText = '';
-  // detailText.innerText = '';
+  goodsNameInput.value = '';
+  shopNameInput.value = '';
 
   for(let i = 0; i < priceData.length; i++) {
-    const priceDataI = priceData[i];
-
-
-    // detailText.innerHTML = priceDataI.goods + 'に<br>さらに情報を追加して保存';
-
     saveBtn.addEventListener('click', () => {
-      if(goodsNameInput.value.length === 0 || shopNameInput.value.length === 0) {
-        alert('入力欄に空白があると思われます。');
-        return;
+      const today = new Date();
+      const month = today.getMonth() + 1; // 月は0から数えてしまうので1を足す
+      const day = today.getDate(); // 日にちを取得
+      const dayofweek = today.getDay(); // 曜日を取得(0~6で 0は日曜日、6は土曜日)
+
+      function dateExpression() {
+        const dayname = ['日', '月', '火', '水', '木', '金', '土']; // 曜日は番号で取得するので配列が必要
+        const result = (`${month}月${day}日(${dayname[dayofweek]})`);
+        return result;
       }
-      const blob = new Blob([`${shopNameInput.value}にあった「${goodsNameInput.value}」は、${priceData[i].priceStrong + priceData[i].priceSpan}です。`], { type: 'text/plain' });
+
+      const blob = new Blob([`${dateExpression()}、${shopNameInput.value}にあった「${goodsNameInput.value}」は、${priceData[i].priceStrong + priceData[i].priceSpan}です。`], { type: 'text/plain' });
       const aTag = document.createElement('a');
       aTag.setAttribute('href', URL.createObjectURL(blob));
       aTag.setAttribute('download', goodsNameInput.value + '.txt');
       aTag.setAttribute('target', '_blank');
       aTag.click();
 
-      goodsNameInput.value = '';
-      shopNameInput.value = '';
       back.style.display = 'none';
       detailArea.style.transform = 'translate(0, -1000%)';
     }, false);
 
     const trElement = document.createElement('tr'); // 追加する一行
     const goodsTd = document.createElement('td');
-    goodsTd.innerText = priceDataI.goods;
+    goodsTd.innerText = priceData[i].goods;
     const priceElement = document.createElement('td'); // 値段（真ん中）のtd
     const unitSpanElement = document.createElement('span'); // 普通の文字
-    unitSpanElement.innerText = priceDataI.priceSpan;
+    unitSpanElement.innerText = priceData[i].priceSpan;
     const priceStrongTd = document.createElement('strong'); // 太字
-    priceStrongTd.innerText = priceDataI.priceStrong;
+    priceStrongTd.innerText = priceData[i].priceStrong;
     const detailBtnTd = document.createElement('td'); // 詳細ボタン
     const detailBtn = document.createElement('button');
     detailBtn.innerText = '詳細';
@@ -126,6 +126,8 @@ function tableAdd() {
     }, false);
 
     detailBtn.addEventListener('click', () => {
+      goodsNameInput.value = '';
+      shopNameInput.value = '';
       back.style.display = 'block';
       detailArea.style.transform = 'translate(-50%, 0)';
     }, false);
@@ -153,4 +155,3 @@ function deletePriceData(priceDataIndex) {
   tableAdd();
   tableDisplayCheck();
 }
-
