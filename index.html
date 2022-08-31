@@ -30,9 +30,10 @@
   <!-- メイン -->
   <main>
     <div id="description">
-      <h3>使い方</h3>
+      <h4>使い方</h4>
       <p>単価計算器は、買い物で「何個で何円」「何グラムで何円」のような表示のされ方があった時に、計算してどれがお得かを調べてくれるツールです。<br>
-      個数・値段は、半角の数字で入力してください。</p>
+      個数・値段は、半角の数字で入力してください。<br>
+      ※ページを移動すると、データはすべて消えてしまいます。</p>
     </div>
 
     <div id="unitcost-calc-input" class="input-group mb-2">
@@ -53,7 +54,7 @@
     </div>
 
     <div id="detail">
-      <p id="detail-text">詳細情報を追加して保存<br>「複数のファイルをダウンロードしようとしています」のような表示が出た際は必ず<strong style="text-decoration: underline;">ブロックしてください。</strong></p>
+      <p id="detail-text"></p>
       <p><input type="text" id="shop-name" class="form-control" placeholder="店舗名" value=""></p>
       <p><input type="text" id="goods-name" class="form-control" placeholder="商品名" value=""></p>
       <p><button id="close-btn" class="mr-5 btn btn-light me-3">閉じる</button><button id="save-btn" class="btn btn-info">保存</button></p>
@@ -68,6 +69,7 @@
         </tbody>
       </table>
     </div>
+    <div><button id="all-delete-btn" class="btn btn-danger mb-2">データをすべて消去</button></div>
     <div id="back"></div>
   </main>
   <!-- フッター -->
