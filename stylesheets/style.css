@@ -82,3 +82,7 @@ main {
   backdrop-filter: blur(1px);
   z-index: 9;
 }
+
+#all-delete-btn {
+  display: none;
+}
