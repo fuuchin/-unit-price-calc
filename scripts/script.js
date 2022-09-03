@@ -113,7 +113,7 @@ function tableAdd() {
     tableTrAdd.insertBefore(trElement, tableTrAdd.firstChild); // trをtbodyに追加する
 
     delBtn.addEventListener('click', () => { // 削除ボタン
-      if(confirm('削除すると、もう元に戻せません。\n本当に削除しますか？')) {
+      if(confirm('このデータを削除するよ。\nダメだったらキャンセルを押して、\n良かったらOKを押してね。')) {
         deletePriceData(i);
       } else {
         return;
@@ -184,15 +184,13 @@ function deletePriceData(priceDataIndex) {
 }
 
 allDelBtn.addEventListener('click', () => {
-  if(confirm('この操作を実行するとデータがすべて消えるので物凄く危険です。\n元に戻すこともできません。\n本当によろしいですか？')) {
-  if(confirm('ファイナルアンサー？')) {
+  if(confirm('要るものは保存した？\n全部消えちゃうよ。')) {
     priceData = [];
     tableTrAdd.innerText = '';
     detailText.innerText = '';
     goodsNameInput.value = '';
     shopNameInput.value = '';
     tableDisplayCheck();
-  } else return;
   } else return;
 }, false)
 
